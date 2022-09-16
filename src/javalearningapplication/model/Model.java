@@ -10,5 +10,5 @@ package javalearningapplication.model;
  * @author 2dam
  */
 public interface Model {
-    
+    void getGreeting();
 }

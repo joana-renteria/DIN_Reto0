@@ -10,5 +10,19 @@ package javalearningapplication.ui;
  * @author 2dam
  */
 public class ViewFactory {
+    private static ViewGuiImplementation gui;
+    private static ViewTextImplementation text;
+
+    public static View getView(String mode) {
+        switch(mode){
+            case "gui":
+                
+                break;
+            case "text":
+                break;
+        }
+        return null;
+    }
+
     
 }

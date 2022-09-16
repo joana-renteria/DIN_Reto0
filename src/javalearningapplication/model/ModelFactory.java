@@ -10,5 +10,16 @@ package javalearningapplication.model;
  * @author 2dam
  */
 public class ModelFactory {
+
+    public static Model getModel(String mode) {
+        switch(mode){
+            case "db":
+                
+                break;
+            case "file":
+                break;
+        }
+        return null;
+    }
     
 }

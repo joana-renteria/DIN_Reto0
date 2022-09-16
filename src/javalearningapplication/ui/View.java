@@ -10,5 +10,6 @@ package javalearningapplication.ui;
  * @author 2dam
  */
 public interface View {
+    void showGreeting();
     
 }
