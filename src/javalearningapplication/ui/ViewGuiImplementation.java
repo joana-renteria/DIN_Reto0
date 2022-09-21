@@ -6,11 +6,13 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ViewGuiImplementation extends Application implements View {
 
     private String greeting;
+    private Stage primaryStage;
     
     public ViewGuiImplementation(){
     }
@@ -18,11 +20,11 @@ public class ViewGuiImplementation extends Application implements View {
     @Override
     public void showGreeting(String greeting) {
         this.greeting = greeting;
-        this.start();
+        this.start(primaryStage);
     }
     
     @Override
-    private void start(Stage primaryStage) {
+    public void start(Stage primaryStage) {
         Text txt = new Text();
         txt.setText(this.greeting);
         
