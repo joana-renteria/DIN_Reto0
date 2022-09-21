@@ -1,5 +1,8 @@
 package controller;
 
+import javalearningapplication.model.Model;
+import javalearningapplication.ui.View;
+
 public class Controller {
 
 	public Controller() {

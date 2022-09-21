@@ -1,13 +1,17 @@
 package javalearningapplication;
 
 import controller.Controller;
+import java.util.ResourceBundle;
 import javalearningapplication.model.Model;
 import javalearningapplication.model.ModelFactory;
 import javalearningapplication.ui.View;
 import javalearningapplication.ui.ViewFactory;
 
 public class Application {
-    private Controller controller;
+    private static ResourceBundle configFile = 
+            ResourceBundle.getBundle("javalearningapplication.config");
+            
+    private static Controller controller;
     private static View view;
     private static Model model;
 
@@ -22,6 +26,12 @@ public class Application {
                 break;
                 
             default:
+                if(configFile.getString("VIEWMODE").equalsIgnoreCase("Text")){
+                    view = ViewFactory.getView("text");
+                }
+                else if(configFile.getString("VIEWMODE").equalsIgnoreCase("View")){
+                    view = view = ViewFactory.getView("gui");
+                }
                 break;
         }
         
@@ -36,7 +46,7 @@ public class Application {
         }
         
         controller = new Controller();
-        controller.run();        
+        controller.run(view, model);        
         
     }
     
