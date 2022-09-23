@@ -14,35 +14,40 @@ public class Application {
     private static Controller controller;
     private static View view;
     private static Model model;
+    
+    private static String readViewArgsFromFile() {
+        if(configFile.getString("VIEWMODE").equalsIgnoreCase("Text")){
+            view = ViewFactory.getView("text");
+        }
+        else if(configFile.getString("VIEWMODE").equalsIgnoreCase("View")){
+            view = view = ViewFactory.getView("gui");
+        }
+    }
+
+    private static String readModelArgsFromFile() {
+        if(configFile.getString("DATAMODE").equalsIgnoreCase("db")){
+            model = ModelFactory.getModel("db");
+        }
+        else if(configFile.getString("DATAMODE").equalsIgnoreCase("file")){
+            model = ModelFactory.getModel("file");
+        }
+    }
 
     public static void main(String[] args) {
-        switch(args[1]){
-            case "text":
-                view = ViewFactory.getView("text");
-                break;
-                
-            case "gui":
-                view = ViewFactory.getView("gui");
-                break;
-                
-            default:
-                if(configFile.getString("VIEWMODE").equalsIgnoreCase("Text")){
-                    view = ViewFactory.getView("text");
-                }
-                else if(configFile.getString("VIEWMODE").equalsIgnoreCase("View")){
-                    view = view = ViewFactory.getView("gui");
-                }
-                break;
+        if(args.contains("text")) {
+            view = ViewFactory.getView("text");
+        } else if(args.contains("gui")) {            
+            view = ViewFactory.getView("gui");
+        } else {
+            readViewArgsFromFile();
         }
         
-        switch(args[2]){
-            case "db":
-                model = ModelFactory.getModel("db");
-                break;
-                
-            case "file":
-                model = ModelFactory.getModel("file");
-                break;
+        if(args.contains("db")) {
+            model = ModelFactory.getModel("db");
+        } else if(args.contains("file")) {            
+            model = ModelFactory.getModel("file");
+        } else {
+            readModelArgsFromFile();
         }
         
         controller = new Controller();
