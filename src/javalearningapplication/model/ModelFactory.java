@@ -5,21 +5,28 @@
  */
 package javalearningapplication.model;
 
+import java.util.ResourceBundle;
+import javalearningapplication.ui.ViewFactory;
+
 /**
  *
  * @author 2dam
  */
 public class ModelFactory {
+    private static String typeFile = 
+            ResourceBundle.getBundle("resources.config").getString("DATAMODE");
+    private static Model model;
 
-    public static Model getModel(String mode) {
-        switch(mode){
-            case "db":
-                
-                break;
-            case "file":
-                break;
+    public static Model getModel() {
+        
+        if(typeFile.equalsIgnoreCase("db")){
+            model = new ModelDbImplementation();
         }
-        return null;
+        else if(typeFile.equalsIgnoreCase("file")){
+            model = new ModelFileImplementation();
+        }
+    return model;
     }
+    
     
 }

@@ -9,8 +9,8 @@ public class Controller {
 	}
 
 	public void run(View view, Model model) {
+            System.out.println(model.getGreeting());
 		String greeting = model.getGreeting();
 		view.showGreeting(greeting);
 	}
-
 }
