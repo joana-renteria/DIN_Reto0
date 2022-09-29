@@ -12,5 +12,4 @@ public class Controller {
 		String greeting = model.getGreeting();
 		view.showGreeting(greeting);
 	}
-
 }

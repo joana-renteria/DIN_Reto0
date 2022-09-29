@@ -5,6 +5,10 @@
  */
 package javalearningapplication.ui;
 
+import java.util.ResourceBundle;
+import javalearningapplication.ui.ViewGuiImplementation;
+import javalearningapplication.ui.ViewTextImplementation;
+
 /**
  *
  * @author 2dam
@@ -12,16 +16,18 @@ package javalearningapplication.ui;
 public class ViewFactory {
     private static ViewGuiImplementation gui;
     private static ViewTextImplementation text;
+    private static View view;
+    private static String viewType = 
+            ResourceBundle.getBundle("resources.config").getString("VIEWMODE");
 
-    public static View getView(String mode) {
-        switch(mode){
-            case "gui":
-                
-                break;
-            case "text":
-                break;
+    public static View getView() {
+        if(viewType.equalsIgnoreCase("Text")){
+            view = new ViewTextImplementation();
         }
-        return null;
+        else if(viewType.equalsIgnoreCase("View")){
+            view = new ViewGuiImplementation();
+        }
+        return view;
     }
 
     

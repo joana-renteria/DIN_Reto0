@@ -17,16 +17,16 @@ public class ViewGuiImplementation extends Application implements View {
     public ViewGuiImplementation(){
     }
 
-    @Override
-    public void showGreeting(String greeting) {
-        this.greeting = greeting;
-        this.start(primaryStage);
+   @Override
+    public void showGreeting(String greeting){
+        launch(greeting);
     }
     
     @Override
     public void start(Stage primaryStage) {
-        Text txt = new Text();
-        txt.setText(this.greeting);
+        String parameter;
+        parameter = getParameters().getRaw().get(0);
+        Text txt = new Text(parameter);
         
         StackPane root = new StackPane();
         root.getChildren().add(txt);
