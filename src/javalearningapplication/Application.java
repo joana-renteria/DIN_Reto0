@@ -6,6 +6,12 @@ import javalearningapplication.model.ModelFactory;
 import javalearningapplication.ui.View;
 import javalearningapplication.ui.ViewFactory;
 
+/**
+ * 
+ * @author 2dam
+ * This class launches the  program
+ */
+
 public class Application {
             
     private static Controller controller;
@@ -13,6 +19,11 @@ public class Application {
     private static Model model;
     private static ModelFactory modelFactory;
     private static ViewFactory viewFactory;
+    
+    /**
+     * 
+     * Gets a model and a view and sends them as perimeters to the run function
+     */
 
     public static void main(String[] args) {
         model = modelFactory.getModel();
