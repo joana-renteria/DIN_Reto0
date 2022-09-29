@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package javalearningapplication.model;
 
 import org.junit.Test;
@@ -10,13 +6,17 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author minyb
+ * @author 2dam
+ * test for the model implementation through file
  */
 public class ModelFileImplementationTest {
     
     public ModelFileImplementationTest() {
     }
     
+    /**
+     * Test method that returns the greeting message
+     */
     @Test
     public void testGetGreeting() {
         String message = "HELLO WORLD";
