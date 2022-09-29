@@ -9,6 +9,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author 2dam
+ * Implementation of the view interface through graphical user interface
+ */
+
 public class ViewGuiImplementation extends Application implements View {
 
     private String greeting;

@@ -1,19 +1,74 @@
 package javalearningapplication.model;
 
+import java.sql.*;
+import java.util.ResourceBundle;
+
 /**
- *
+ * 
  * @author 2dam
- * This class accesses the database
+ * Implementation for the model when reading data from database
  */
+
 public class ModelDbImplementation implements Model{
+    private Connection con;
+    private PreparedStatement stmt;
+    private ResultSet rs;
+	
+    private String greeting = null;
+	
+    private ResourceBundle configFile = 
+        ResourceBundle.getBundle("resources.dbconnection");
+    private String 
+        url = configFile.getString("Conn"),
+        user = configFile.getString("DBUser"),
+        pass = configFile.getString("DBPass");
+		
+    private String getMessageStatement = 
+	"SELECT * FROM messages LIMIT 1";
 
     /**
-     * 
-     * Enters the database and returns the message 
+     * Opens connection with database
      */
-    @Override
-    public String getGreeting() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void openConnection() {
+        con = null;
+        try {
+            con = DriverManager.getConnection(url, user, pass);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     
+    /**
+     * Closes connection with database
+     */
+    private void closeConnection() {
+        try {
+            if (stmt != null) 
+            stmt.close();
+        
+            if (con != null)
+                con.close();
+        } catch (SQLException sqle) {
+			
+		}
+    }
+
+    /*
+    Gets greeting message from the database
+    */
+	@Override
+	public String getGreeting() {
+		try {
+		    openConnection();
+            stmt = con.prepareStatement(getMessageStatement);
+            rs = stmt.executeQuery();
+            rs.next();
+            greeting = rs.getString("message");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		closeConnection();
+		return greeting;
+	}
+
 }
