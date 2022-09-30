@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 /**
  * 
- * @author 2dam
  * Implementation of the view interface through graphical user interface
  */
 
@@ -23,11 +22,19 @@ public class ViewGuiImplementation extends Application implements View {
     public ViewGuiImplementation(){
     }
 
+    /**
+     * Shows the greeting using the javafx view
+     * @param greeting the greeting string to be shown
+     */
    @Override
     public void showGreeting(String greeting){
         launch(greeting);
     }
     
+    /**
+     * Starts the window
+     * @param primaryStage 
+     */
     @Override
     public void start(Stage primaryStage) {
         String parameter;

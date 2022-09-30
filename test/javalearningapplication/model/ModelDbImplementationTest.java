@@ -10,7 +10,6 @@ import static org.junit.Assert.*;
 
 /**
     *
-    * @author 2dam
     * test for the model implementation through file
     */
 public class ModelDbImplementationTest {

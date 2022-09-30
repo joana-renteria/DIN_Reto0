@@ -5,7 +5,6 @@ import javalearningapplication.ui.ViewFactory;
 
 /**
  *
- * @author 2dam
  * This class reads the file and creates an implementation based on what
  * the program reads on the properties file.
  */
@@ -17,6 +16,7 @@ public class ModelFactory {
     /**
      * 
      * Creates and returns the implementation
+     * @returns the Model from the selected implementation
      */
     public static Model getModel() {
         
