@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 /**
  * 
- * @author 2dam
  * Implementation for the model when reading data from database
  */
 
@@ -65,10 +64,11 @@ public class ModelDbImplementation implements Model{
             rs.next();
             greeting = rs.getString("message");
 		} catch (SQLException e) {
-			e.printStackTrace();
+            e.printStackTrace();
 		}
 		closeConnection();
 		return greeting;
 	}
 
 }
+
