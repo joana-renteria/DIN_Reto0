@@ -3,12 +3,17 @@ package javalearningapplication.model;
 import java.sql.*;
 import java.util.ResourceBundle;
 
+/**
+ * 
+ * Implementation for the model when reading data from database
+ */
+
 public class ModelDbImplementation implements Model{
-	private Connection con;
+    private Connection con;
     private PreparedStatement stmt;
     private ResultSet rs;
 	
-	private String greeting = null;
+    private String greeting = null;
 	
     private ResourceBundle configFile = 
         ResourceBundle.getBundle("resources.dbconnection");
@@ -17,18 +22,24 @@ public class ModelDbImplementation implements Model{
         user = configFile.getString("DBUser"),
         pass = configFile.getString("DBPass");
 		
-	private String getMessageStatement = 
-		"SELECT * FROM messages LIMIT 1";
+    private String getMessageStatement = 
+	"SELECT * FROM messages LIMIT 1";
 
+    /**
+     * Opens connection with database
+     */
     private void openConnection() {
         con = null;
         try {
             con = DriverManager.getConnection(url, user, pass);
         } catch (SQLException e) {
-
+            e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Closes connection with database
+     */
     private void closeConnection() {
         try {
             if (stmt != null) 
@@ -41,6 +52,10 @@ public class ModelDbImplementation implements Model{
 		}
     }
 
+    /**
+    * Gets greeting message from the database
+    * @returns String greeting
+    */
 	@Override
 	public String getGreeting() {
 		try {
@@ -48,12 +63,13 @@ public class ModelDbImplementation implements Model{
             stmt = con.prepareStatement(getMessageStatement);
             rs = stmt.executeQuery();
             rs.next();
-            greeting = rs.getCharacterStream("message").toString();
+            greeting = rs.getString("message");
 		} catch (SQLException e) {
-			closeConnection();
+            e.printStackTrace();
 		}
 		closeConnection();
 		return greeting;
 	}
 
 }
+

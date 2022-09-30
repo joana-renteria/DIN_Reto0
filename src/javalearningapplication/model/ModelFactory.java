@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javalearningapplication.model;
 
 import java.util.ResourceBundle;
@@ -10,13 +5,19 @@ import javalearningapplication.ui.ViewFactory;
 
 /**
  *
- * @author 2dam
+ * This class reads the file and creates an implementation based on what
+ * the program reads on the properties file.
  */
 public class ModelFactory {
     private static String typeFile = 
             ResourceBundle.getBundle("resources.config").getString("DATAMODE");
     private static Model model;
 
+    /**
+     * 
+     * Creates and returns the implementation
+     * @returns the Model from the selected implementation
+     */
     public static Model getModel() {
         
         if(typeFile.equalsIgnoreCase("db")){
