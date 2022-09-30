@@ -6,7 +6,6 @@ import javalearningapplication.ui.ViewTextImplementation;
 
 /**
  *
- * @author 2dam
  * This class reads the configuration file and creates an implementation based on what
  * the program reads.
  */
@@ -20,6 +19,7 @@ public class ViewFactory {
     /**
      * 
      * Creates and returns the implementation
+     * @returns View the type of view implentation chosen
      */
     public static View getView() {
         if(viewType.equalsIgnoreCase("Text")){

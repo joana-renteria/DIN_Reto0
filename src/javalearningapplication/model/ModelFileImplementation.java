@@ -4,7 +4,6 @@ import java.util.ResourceBundle;
 
 /**
  * 
- * @author 2dam
  * Implementation of the model interface
  */
 
@@ -14,6 +13,7 @@ public class ModelFileImplementation implements Model {
     /**
      * 
      * Reads the file and returns the String labeled as "MESSAGE" 
+     * @returns The greeting String
      */
     
     @Override

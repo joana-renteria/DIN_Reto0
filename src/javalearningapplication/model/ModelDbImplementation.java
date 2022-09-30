@@ -52,8 +52,9 @@ public class ModelDbImplementation implements Model{
 		}
     }
 
-    /*
-    Gets greeting message from the database
+    /**
+    * Gets greeting message from the database
+    * @returns String greeting
     */
 	@Override
 	public String getGreeting() {

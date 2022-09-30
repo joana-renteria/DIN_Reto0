@@ -2,7 +2,6 @@ package javalearningapplication.ui;
 
 /**
  * 
- * @author 2dam
  * Interface for view management
  */
 public interface View {
@@ -10,6 +9,7 @@ public interface View {
     /**
      * 
      * Shows greeting message
+     * @param greeting the greeting message to be shown
      */
     void showGreeting(String greeting);
     
